@@ -44,8 +44,6 @@ def json_field_path(json_data):
 
 def write_to_excel(fields,data_types):
     df = pd.DataFrame(list(zip(fields, data_types)),columns =['Field', 'Data Type'])
-    #df.loc[df["Data Type"] == "str", "Data Type"] = "string"
-
     df['Data Type'] = np.where(df['Data Type'] == "str", "string",
                        np.where(df['Data Type'] == "int", "integer",
                        np.where(df['Data Type'] == "bool", "boolean", df['Data Type'])))
@@ -57,5 +55,4 @@ if __name__ == '__main__':
     data_types = []
     json_data = json_file(sys.argv[1])
     fields = json_field_path(json_data)
-    
     write_to_excel(fields,data_types)
