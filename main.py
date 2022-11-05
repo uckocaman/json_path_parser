@@ -37,9 +37,7 @@ def json_field_path(json_data):
     return fields_list
 
 
-
-
-def write_to_excel():
+def write_to_excel(fields, data_types):
     df = pd.DataFrame(list(zip(fields, data_types)), columns=["Field", "Data Type"])
     df.loc[df["Data Type"] == "str", "Data Type"] = "string"
     df.loc[df["Data Type"] == "int", "Data Type"] = "integer"
