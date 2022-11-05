@@ -10,7 +10,7 @@ To write a json file to a sql based table, it must define the path of the keys. 
 This can be automated with the main.py script. You can convert it by entering the path of the json file as in the example below.
 
 ```
-python main.py 'example_data.json'
+python main.py 'example_data/example_data.json'
 ```
 
 ## Example Output

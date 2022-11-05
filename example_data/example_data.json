@@ -12,7 +12,7 @@
         "hOffset": 250,
         "vOffset": 250.0,
         "alignment": "center",
-        "int_array": [1,2,3,4],
+        "int_array": [1,2,3,4,5,6,7,8,9],
         "datetime_field": "2018-12-10T13:49:51.141Z"
     },
     "text": {
@@ -25,6 +25,7 @@
         "alignment": "center",
         "onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90;",
         "str_array": ["a","b","c"],
+        "empty_array": [],
         "boolean_field": true
     }
 }}
