@@ -1,17 +1,16 @@
 import pandas as pd
-import numpy as np
-from dateutil.parser import parse
 import json
 import sys
+from typing import Dict, List
 
 
-def json_file(file_path):
+def json_file(file_path: str) -> Dict:
     f = open(file_path)
     json_data = json.load(f)
     return json_data
 
 
-def json_field_path(json_data):
+def json_field_path(json_data: Dict) -> List[str]:
     if not isinstance(json_data, dict):
         return json_data
 
@@ -40,7 +39,7 @@ def json_field_path(json_data):
     return fields_list
 
 
-def write_to_excel(fields, data_types, example_value):
+def write_to_excel(fields: List[str], data_types: List[str], example_value: List) -> None:
     df = pd.DataFrame(
         list(zip(fields, data_types, example_value)),
         columns=["Field", "Data Type", "Example Value"],
@@ -63,7 +62,7 @@ def write_to_excel(fields, data_types, example_value):
         df["Field"].str.lower().str.contains("|".join(dates)), "Data Type"
     ] = "timestamp (PLEASE CHECK FROM DOCUMENT)"
     df["Description"] = ""
-    
+
     df.to_excel("output.xlsx", index=False)
 
 
