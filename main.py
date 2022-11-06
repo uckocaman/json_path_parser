@@ -63,8 +63,8 @@ def write_to_excel(fields, data_types, example_value):
         df["Field"].str.lower().str.contains("|".join(dates)), "Data Type"
     ] = "timestamp (PLEASE CHECK FROM DOCUMENT)"
     df["Description"] = ""
-    print(df)
-    # df.to_excel("output.xlsx", index=False)
+    
+    df.to_excel("output.xlsx", index=False)
 
 
 if __name__ == "__main__":
