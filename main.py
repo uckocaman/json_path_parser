@@ -25,8 +25,8 @@ def json_field_path(json_data):
         elif isinstance(val, list):
             if len(val) == 0:
                 fields_list.append(k)
-                data_types.append("Empty Array")
-                exmp_values.append("Empty Array, nothing in here :(")
+                data_types.append("EMPTY ARRAY")
+                exmp_values.append("EMPTY ARRAY, NOTHING IN HERE :(")
             elif isinstance(val[0], dict):
                 fields_list += [k + "." + x for x in json_field_path(val[0])]
             else:
@@ -49,12 +49,20 @@ def write_to_excel(fields, data_types, example_value):
     df.loc[df["Data Type"] == "int", "Data Type"] = "integer"
     df.loc[df["Data Type"] == "bool", "Data Type"] = "boolean"
 
-    dates = ["Date", "date", "Time", "time" "created_at", 'last_modified_at','updatedAt','createdAt'] # add lower  
+    dates = [
+        "date",
+        "time",
+        "createdat",
+        "created_at",
+        "updatedat",
+        "updated_at",
+        "last_modified_at",
+        "lastmodifiedat",
+    ]
     df.loc[
-        df["Field"].str.contains("|".join(dates)), "Data Type"
-    ] = "timestamp (please check from document)"
+        df["Field"].str.lower().str.contains("|".join(dates)), "Data Type"
+    ] = "timestamp (PLEASE CHECK FROM DOCUMENT)"
     df["Description"] = ""
-
     print(df)
     # df.to_excel("output.xlsx", index=False)
 
